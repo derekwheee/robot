@@ -22,7 +22,7 @@ exports.deployment = async ({ start } = {}) => {
 
 if (require.main === module) {
 
-    exports.deployment({ start: true });
+    exports.deployment();
 
     process.on('unhandledRejection', (err) => {
 

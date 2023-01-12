@@ -31,7 +31,11 @@ module.exports = new Confidence.Store({
         plugins: [
             {
                 plugin: '../lib', // Main plugin
-                options: {}
+                options: {
+                    pinout: {
+                        motor: 1
+                    }
+                }
             },
             {
                 plugin: {
