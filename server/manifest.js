@@ -10,12 +10,6 @@ Dotenv.config({ path: `${__dirname}/.env` });
 // Glue manifest as a confidence store
 module.exports = new Confidence.Store({
     server: {
-        host: 'localhost',
-        port: {
-            $param: 'PORT',
-            $coerce: 'number',
-            $default: 3000
-        },
         debug: {
             $filter: 'NODE_ENV',
             $default: {
@@ -33,7 +27,9 @@ module.exports = new Confidence.Store({
                 plugin: '../lib', // Main plugin
                 options: {
                     pinout: {
-                        motor: 1
+                        motor1: {
+                            $param: 'MOTOR_1'
+                        }
                     }
                 }
             },
