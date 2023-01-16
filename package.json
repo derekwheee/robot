@@ -10,7 +10,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "hpal run robot:start",
+    "start": "node server",
     "test": "lab -a @hapi/code -L",
     "lint": "eslint ."
   },
@@ -37,7 +37,6 @@
     "babel-eslint": "10.x.x",
     "dotenv": "8.x.x",
     "eslint": "7.x.x",
-    "exiting": "6.x.x",
-    "mock-firmata": "^0.2.0"
+    "exiting": "6.x.x"
   }
 }
