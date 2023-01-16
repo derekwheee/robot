@@ -10,6 +10,13 @@ exports.deployment = async () => {
 
     await server.initialize();
 
+    const { centralService } = server.services();
+
+    await centralService.start();
+
+    // This keeps the process from exiting
+    setInterval(() => { /* no-op */ }, 5000);
+
     return server;
 };
 
