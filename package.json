@@ -12,7 +12,11 @@
   "scripts": {
     "start": "node server",
     "test": "lab -a @hapi/code -L",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "receiver:compile": "arduino-cli compile -b arduino:avr:nano firmware/receiver",
+    "receiver:upload": "arduino-cli upload -b arduino:avr:nano firmware/receiver",
+    "controller:compile": "arduino-cli compile -b arduino:avr:nano firmware/controller",
+    "controller:upload": "arduino-cli upload -b arduino:avr:nano firmware/controller"
   },
   "dependencies": {
     "@hapi/boom": "9.x.x",
