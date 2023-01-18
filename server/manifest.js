@@ -27,7 +27,10 @@ module.exports = new Confidence.Store({
                 plugin: '../lib', // Main plugin
                 options: {
                     pinout: {
-                        receiver: { $param: 'RECEIVER' },
+                        receiver: {
+                            address: { $param: 'RECEIVER_ADDRESS' },
+                            power: { $param: 'RECEIVER_POWER' }
+                        },
                         steering: {
                             servo: { $param: 'STEERING_SERVO', $coerce: 'number' },
                             input: { $param: 'STEERING_INPUT' }
