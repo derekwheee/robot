@@ -13,18 +13,20 @@
     "start": "node server",
     "test": "lab -a @hapi/code -L",
     "lint": "eslint .",
-    "receiver:compile": "arduino-cli compile -b arduino:avr:nano firmware/receiver",
-    "receiver:upload": "arduino-cli upload -b arduino:avr:nano firmware/receiver",
-    "controller:compile": "arduino-cli compile -b arduino:avr:nano firmware/controller",
-    "controller:upload": "arduino-cli upload -b arduino:avr:nano firmware/controller"
+    "receiver:compile": "arduino-cli compile -b adafruit:samd:adafruit_itsybitsy_m0 firmware/receiver",
+    "receiver:upload": "arduino-cli upload -b adafruit:samd:adafruit_itsybitsy_m0 -p /dev/cu.usbmodem144401 firmware/receiver",
+    "controller:compile": "arduino-cli compile -b arduino:avr:uno firmware/controller",
+    "controller:upload": "arduino-cli upload -b arduino:avr:uno -p /dev/cu.usbserial-02894A4C firmware/controller"
   },
   "dependencies": {
     "@hapi/boom": "9.x.x",
     "@hapipal/haute-couture": "4.x.x",
     "@hapipal/schmervice": "^2.1.0",
     "@reduxjs/toolkit": "^1.9.1",
+    "@u4/opencv4nodejs": "^6.4.1",
     "johnny-five": "^2.1.0",
-    "joi": "17.x.x"
+    "joi": "17.x.x",
+    "node-webcam": "^0.8.1"
   },
   "devDependencies": {
     "@babel/types": "^7.20.7",
@@ -41,6 +43,10 @@
     "babel-eslint": "10.x.x",
     "dotenv": "8.x.x",
     "eslint": "7.x.x",
-    "exiting": "6.x.x"
+    "exiting": "6.x.x",
+    "terminal-image": "^2.0.0"
+  },
+  "opencv4nodejs": {
+    "autoBuildOpencvVersion": "4.7.0"
   }
 }
