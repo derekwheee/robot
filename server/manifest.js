@@ -26,6 +26,12 @@ module.exports = new Confidence.Store({
             {
                 plugin: '../lib', // Main plugin
                 options: {
+                    isDebug: { $param: 'DEBUG', $default: false, 1: true },
+                    vision: {
+                        outputImages: { $param: 'VISION_OUTPUT_IMAGES', $default: false, 1: true },
+                        cameraFilepath: { $param: 'VISION_CAMERA_FILEPATH' },
+                        objectsFilepath: { $param: 'VISION_OBJECTS_FILEPATH' }
+                    },
                     pinout: {
                         receiver: {
                             address: { $param: 'RECEIVER_ADDRESS', $coerce: 'number' },
