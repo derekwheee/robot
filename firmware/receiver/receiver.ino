@@ -19,7 +19,7 @@ int CHANNELS[12] = {
     /* CHANNEL 11 */ UNSET,
     /* CHANNEL 12 */ UNSET};
 
-int DURATIONS[12];
+uint32_t DURATIONS[12];
 
 void setup()
 {

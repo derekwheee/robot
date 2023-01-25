@@ -37,11 +37,14 @@ module.exports = new Confidence.Store({
                             address: { $param: 'RECEIVER_ADDRESS', $coerce: 'number' },
                             power: { $param: 'RECEIVER_POWER' }
                         },
-                        steering: {
-                            servo: { $param: 'STEERING_SERVO', $coerce: 'number' },
-                            input: { $param: 'STEERING_INPUT' }
+                        motors: {
+                            left: {
+                                control: { $param: 'MOTOR_1' }
+                            },
+                            right: {
+                                control: { $param: 'MOTOR_2' }
+                            }
                         },
-                        motor1: { $param: 'MOTOR_1' },
                         telemetry1: { $param: 'TELEMETRY_1' },
                         telemetry2: { $param: 'TELEMETRY_2' },
                         telemetry3: { $param: 'TELEMETRY_3' },
