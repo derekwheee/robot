@@ -32,6 +32,9 @@ module.exports = new Confidence.Store({
                         cameraFilepath: { $param: 'VISION_CAMERA_FILEPATH' },
                         objectsFilepath: { $param: 'VISION_OBJECTS_FILEPATH' }
                     },
+                    location: {
+                        port: { $param: 'GPS_PORT' }
+                    },
                     pinout: {
                         receiver: {
                             address: { $param: 'RECEIVER_ADDRESS', $coerce: 'number' },
@@ -39,10 +42,10 @@ module.exports = new Confidence.Store({
                         },
                         motors: {
                             left: {
-                                control: { $param: 'MOTOR_1' }
+                                control: { $param: 'MOTOR_L_CONTROL' }
                             },
                             right: {
-                                control: { $param: 'MOTOR_2' }
+                                control: { $param: 'MOTOR_R_CONTROL' }
                             }
                         },
                         telemetry1: { $param: 'TELEMETRY_1' },

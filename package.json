@@ -29,8 +29,7 @@
     "@tensorflow/tfjs-node": "^4.2.0",
     "jimp": "^0.16.2",
     "johnny-five": "^2.1.0",
-    "joi": "17.x.x",
-    "node-webcam": "^0.8.1"
+    "joi": "17.x.x"
   },
   "devDependencies": {
     "@babel/types": "^7.20.7",
