@@ -55,7 +55,10 @@ void get_durations()
 void requestData()
 {
 
-    Wire.write(DURATIONS[READ_CHANNEL]);
+    char data[16];
+    itoa(DURATIONS[READ_CHANNEL], data, 10);
+
+    Wire.write(data);
 }
 
 void receiveData(int howMany)
