@@ -41,12 +41,8 @@ module.exports = new Confidence.Store({
                             power: { $param: 'RECEIVER_POWER' }
                         },
                         motors: {
-                            left: {
-                                control: { $param: 'MOTOR_L_CONTROL' }
-                            },
-                            right: {
-                                control: { $param: 'MOTOR_R_CONTROL' }
-                            }
+                            enableChannel: { $param: 'MOTOR_ENABLE_CHANNEL' },
+                            enableSwitch: { $param: 'MOTOR_ENABLE_SWITCH' }
                         },
                         telemetry1: { $param: 'TELEMETRY_1' },
                         telemetry2: { $param: 'TELEMETRY_2' },
