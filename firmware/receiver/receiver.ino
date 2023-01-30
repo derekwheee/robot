@@ -3,23 +3,22 @@
 #define I2C_ADDRESS 0x27
 
 const int UNSET = -1;
+const int ERROR_PULSE = -1;
+const int NUM_CHANNELS = 7;
 int READ_CHANNEL = 0;
 
-int CHANNELS[12] = {
-    /* CHANNEL 1  */ 13,
-    /* CHANNEL 2  */ 12,
-    /* CHANNEL 3  */ 11,
-    /* CHANNEL 4  */ 10,
-    /* CHANNEL 5  */ UNSET,
-    /* CHANNEL 6  */ UNSET,
-    /* CHANNEL 7  */ UNSET,
-    /* CHANNEL 8  */ UNSET,
-    /* CHANNEL 9  */ UNSET,
-    /* CHANNEL 10 */ UNSET,
-    /* CHANNEL 11 */ UNSET,
-    /* CHANNEL 12 */ UNSET};
+// Pinout
+int POWER = 2;
+int CHANNELS[NUM_CHANNELS] = {
+    /* CHANNEL 5  */ 5,
+    /* CHANNEL 6  */ 7,
+    /* CHANNEL 7  */ 9,
+    /* CHANNEL 8  */ 10,
+    /* CHANNEL 9  */ 11,
+    /* CHANNEL 10 */ 12,
+    /* CHANNEL 11 */ 13};
 
-uint32_t DURATIONS[12];
+uint32_t DURATIONS[NUM_CHANNELS];
 
 void setup()
 {
@@ -27,7 +26,9 @@ void setup()
     Wire.onRequest(requestData);
     Wire.onReceive(receiveData);
 
-    for (int i = 0; i < 12; ++i)
+    pinMode(POWER, OUTPUT);
+
+    for (int i = 0; i < NUM_CHANNELS; ++i)
     {
         if (CHANNELS[i] != UNSET)
         {
@@ -43,13 +44,21 @@ void loop()
 
 void get_durations()
 {
-    for (int i = 0; i < 12; ++i)
+    for (int i = 0; i < NUM_CHANNELS; ++i)
     {
         if (CHANNELS[i] > 0)
         {
-            DURATIONS[i] = pulseIn(CHANNELS[i], HIGH, 500000);
+            int pulse = pulseIn(CHANNELS[i], HIGH, 500000);
+
+            DURATIONS[i] = pulse > 999 && pulse < 2001 ? pulse : ERROR_PULSE;
         }
     }
+}
+
+void setPowerPin(bool toHigh)
+{
+
+    digitalWrite(POWER, toHigh ? HIGH : LOW);
 }
 
 void requestData()
@@ -70,5 +79,10 @@ void receiveData(int howMany)
     if (reg == 1)
     {
         READ_CHANNEL = value;
+    }
+
+    if (reg == 2)
+    {
+        setPowerPin(value == 1 ? true : false);
     }
 }

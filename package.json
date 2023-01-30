@@ -17,7 +17,9 @@
     "receiver:upload": "arduino-cli upload -b adafruit:samd:adafruit_itsybitsy_m0 -p /dev/cu.usbmodem144401 firmware/receiver",
     "controller:compile": "arduino-cli compile -b arduino:avr:uno firmware/controller",
     "controller:upload": "arduino-cli upload -b arduino:avr:uno -p /dev/cu.usbserial-02894A4C firmware/controller",
-    "camera:mac": "rm images/camera.jpg && ffmpeg -f avfoundation -framerate 30 -s 640x480 -i \"0\" -qscale:v 2 -update 1 images/camera.jpg"
+    "camera:mac": "rm images/camera.jpg & ffmpeg -f avfoundation -framerate 30 -s 640x480 -i \"0\" -qscale:v 2 -update 1 images/camera.jpg",
+    "camera:pi": "rm images/camera.jpg & libcamera-still -o images/camera.jpg",
+    "robot:ssh": "ssh pi@raspberry.local"
   },
   "dependencies": {
     "@hapi/boom": "9.x.x",

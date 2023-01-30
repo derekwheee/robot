@@ -37,8 +37,7 @@ module.exports = new Confidence.Store({
                     },
                     pinout: {
                         receiver: {
-                            address: { $param: 'RECEIVER_ADDRESS', $coerce: 'number' },
-                            power: { $param: 'RECEIVER_POWER' }
+                            address: { $param: 'RECEIVER_ADDRESS', $coerce: 'number' }
                         },
                         motors: {
                             enableChannel: { $param: 'MOTOR_ENABLE_CHANNEL' },
