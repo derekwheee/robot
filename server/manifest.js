@@ -28,6 +28,7 @@ module.exports = new Confidence.Store({
                 plugin: '../lib', // Main plugin
                 options: {
                     isDebug: { $param: 'DEBUG', $default: false, 1: true },
+                    mqttHost: { $param: 'MQTT_HOST' },
                     vision: {
                         outputImages: { $param: 'VISION_OUTPUT_IMAGES', $default: false, 1: true },
                         cameraFilepath: { $param: 'VISION_CAMERA_FILEPATH' },
