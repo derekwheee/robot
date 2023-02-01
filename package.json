@@ -19,7 +19,7 @@
     "controller:upload": "arduino-cli upload -b arduino:avr:uno -p /dev/cu.usbserial-02894A4C firmware/controller",
     "camera:mac": "rm images/camera.jpg & ffmpeg -f avfoundation -framerate 30 -s 640x480 -i \"0\" -qscale:v 2 -update 1 images/camera.jpg",
     "camera:pi": "rm images/camera.jpg & libcamera-still -o images/camera.jpg",
-    "robot:ssh": "ssh pi@raspberry.local",
+    "robot:ssh": "ssh pi@raspberrypi.local",
     "mqtt:mac": "brew services start mosquitto",
     "mqtt:pi": "sudo systemctl enable mosquitto.service"
   },
