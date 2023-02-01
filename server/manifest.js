@@ -3,6 +3,7 @@
 const Dotenv = require('dotenv');
 const Confidence = require('@hapipal/confidence');
 const Toys = require('@hapipal/toys');
+const { INDICATORS } = require('../lib/utils/constants');
 
 // Pull .env into process.env
 Dotenv.config({ path: `${__dirname}/.env` });
@@ -48,7 +49,11 @@ module.exports = new Confidence.Store({
                         telemetry3: { $param: 'TELEMETRY_3' },
                         telemetry4: { $param: 'TELEMETRY_4' },
                         telemetry5: { $param: 'TELEMETRY_5' },
-                        telemetry6: { $param: 'TELEMETRY_6' }
+                        telemetry6: { $param: 'TELEMETRY_6' },
+                        indicators: {
+                            [INDICATORS.MOTORS_ENABLED]: { $param: 'INDICATOR_MOTORS_ENABLED' },
+                            [INDICATORS.RECEIVING]: { $param: 'INDICATOR_RECEIVING' }
+                        }
                     }
                 }
             },
