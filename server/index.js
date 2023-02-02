@@ -25,11 +25,14 @@ if (require.main === module) {
 
     const args = Arg({
         '--autoStart': Boolean,
-        '-a': '--autoStart'
+        '-a': '--autoStart',
+        '--giveSight': Boolean,
+        '-g': '--giveSight'
     });
 
     exports.deployment({
-        autoStart: !!args['--autoStart']
+        autoStart: !!args['--autoStart'],
+        giveSight: !!args['--giveSight']
     });
 
     process.on('unhandledRejection', (err) => {
