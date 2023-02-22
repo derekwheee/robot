@@ -19,12 +19,11 @@
     "controller:upload": "arduino-cli upload -b arduino:avr:uno -p /dev/cu.usbserial-02894A4C firmware/controller",
     "camera:mac": "rm images/camera.jpg & ffmpeg -f avfoundation -framerate 30 -s 640x480 -i \"0\" -qscale:v 2 -update 1 images/camera.jpg",
     "camera:pi": "rm images/camera.jpg & libcamera-still -o images/camera.jpg",
-    "robot:ssh": "ssh pi@raspberrypi.local",
-    "mqtt:mac": "brew services start mosquitto",
-    "mqtt:pi": "sudo systemctl enable mosquitto.service"
+    "robot:ssh": "ssh pi@raspberrypi.local"
   },
   "dependencies": {
     "@hapi/boom": "9.x.x",
+    "@hapi/nes": "^13.0.1",
     "@hapipal/haute-couture": "4.x.x",
     "@hapipal/schmervice": "^2.1.0",
     "@reduxjs/toolkit": "^1.9.1",
@@ -37,7 +36,6 @@
     "johnny-five": "^2.1.0",
     "joi": "17.x.x",
     "lodash": "^4.17.21",
-    "mqtt": "^4.3.7",
     "serialport": "^10.5.0"
   },
   "devDependencies": {

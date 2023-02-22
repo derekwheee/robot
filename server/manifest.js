@@ -11,6 +11,12 @@ Dotenv.config({ path: `${__dirname}/.env` });
 // Glue manifest as a confidence store
 module.exports = new Confidence.Store({
     server: {
+        host: '0.0.0.0',
+        port: {
+            $param: 'PORT',
+            $coerce: 'number',
+            $default: 4000
+        },
         debug: {
             $filter: 'NODE_ENV',
             $default: {
@@ -28,7 +34,6 @@ module.exports = new Confidence.Store({
                 plugin: '../lib', // Main plugin
                 options: {
                     isDebug: { $param: 'DEBUG', $default: false, 1: true },
-                    mqttHost: { $param: 'MQTT_HOST' },
                     vision: {
                         framerateMs: { $param: 'VISION_FRAMERATE', $default: 1000 },
                         outputImages: { $param: 'VISION_OUTPUT_IMAGES', $default: false, 1: true },
