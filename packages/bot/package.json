@@ -1,0 +1,63 @@
+{
+  "name": "@robot/bot",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Derek Wheelden",
+  "license": "UNLICENSED",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node server",
+    "test": "lab -a @hapi/code -L",
+    "lint": "eslint .",
+    "receiver:compile": "arduino-cli compile -b adafruit:samd:adafruit_itsybitsy_m0 firmware/receiver",
+    "receiver:upload": "arduino-cli upload -b adafruit:samd:adafruit_itsybitsy_m0 -p /dev/cu.usbmodem144401 firmware/receiver",
+    "controller:compile": "arduino-cli compile -b arduino:avr:uno firmware/controller",
+    "controller:upload": "arduino-cli upload -b arduino:avr:uno -p /dev/cu.usbserial-02894A4C firmware/controller",
+    "camera:mac": "rm images/camera.jpg & ffmpeg -f avfoundation -framerate 30 -s 640x480 -i \"0\" -qscale:v 2 -update 1 images/camera.jpg",
+    "camera:pi": "rm images/camera.jpg & libcamera-still -o images/camera.jpg",
+    "robot:ssh": "ssh pi@raspberrypi.local"
+  },
+  "dependencies": {
+    "@hapi/boom": "9.x.x",
+    "@hapi/nes": "^13.0.1",
+    "@hapipal/haute-couture": "4.x.x",
+    "@hapipal/schmervice": "^2.1.0",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@serialport/parser-readline": "^10.5.0",
+    "@tensorflow-models/coco-ssd": "^2.2.2",
+    "@tensorflow/tfjs": "^4.2.0",
+    "@tensorflow/tfjs-node": "^4.2.0",
+    "arg": "^5.0.2",
+    "audio-generator": "^2.1.2",
+    "audio-speaker": "^1.5.1",
+    "jimp": "^0.16.2",
+    "johnny-five": "^2.1.0",
+    "joi": "17.x.x",
+    "lodash": "^4.17.21",
+    "serialport": "^10.5.0",
+    "socket.io": "^4.6.1",
+    "tone": "^14.7.77"
+  },
+  "devDependencies": {
+    "@babel/types": "^7.20.7",
+    "@hapi/code": "8.x.x",
+    "@hapi/eslint-config-hapi": "13.x.x",
+    "@hapi/eslint-plugin-hapi": "4.x.x",
+    "@hapi/glue": "8.x.x",
+    "@hapi/hapi": "20.x.x",
+    "@hapi/lab": "24.x.x",
+    "@hapipal/confidence": "6.x.x",
+    "@hapipal/hpal": "3.x.x",
+    "@hapipal/hpal-debug": "2.x.x",
+    "@hapipal/toys": "3.x.x",
+    "babel-eslint": "10.x.x",
+    "dotenv": "8.x.x",
+    "eslint": "7.x.x",
+    "exiting": "6.x.x",
+    "terminal-image": "^2.0.0"
+  }
+}
